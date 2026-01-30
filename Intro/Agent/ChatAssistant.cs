@@ -1,3 +1,4 @@
+using Agent.ChatTools;
 using OpenAI.Chat;
 
 namespace Agent

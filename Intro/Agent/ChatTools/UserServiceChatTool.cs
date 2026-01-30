@@ -3,8 +3,9 @@ using Microsoft.Extensions.Configuration;
 using System.ClientModel;
 using OpenAI.Chat;
 using System.Text.Json;
+using Agent.Services;
 
-namespace Agent
+namespace Agent.ChatTools
 {
     public class UserServiceToolsProvider : IChatToolProvider
     {

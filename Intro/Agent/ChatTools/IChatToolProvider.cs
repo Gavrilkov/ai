@@ -1,5 +1,5 @@
 ﻿using OpenAI.Chat;
-namespace Agent
+namespace Agent.ChatTools
 {
     public interface IChatToolProvider
     {

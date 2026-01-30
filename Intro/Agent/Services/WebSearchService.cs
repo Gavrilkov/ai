@@ -1,4 +1,4 @@
-﻿namespace Agent
+﻿namespace Agent.Services
 {
     internal class WebSearchService
     {
