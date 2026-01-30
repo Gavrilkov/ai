@@ -5,6 +5,20 @@ using System.ClientModel;
 using OpenAI.Images;
 
 
+//var a1 = new int[] { 1, 2, 3, 4 };
+//var a2 = new int[] { 11, 22 };
+
+//for (int i = 0; i < a1.Count(); i++)
+//{
+//    for (int j = 0; j < a2.Count(); j++)
+//    {
+//        if (i == j)
+//            Console.WriteLine($"{a1[i]} + {a2[j]} ");
+//        else
+//            continue;
+//    }
+//}
+
 var config = GetConfiguration();
 
 string endpoint = config["AzureOpenAI:Endpoint"];
@@ -12,10 +26,10 @@ string apiKey = config["AzureOpenAI:API_Key"];
 
 AzureOpenAIClient azureClient = new(new Uri(endpoint), new ApiKeyCredential(apiKey));
 
-//UseChatModel(azureClient);
+UseChatModel(azureClient);
 //UseFormattedChatModel(azureClient);
 //await UseEmbedingModel(azureClient);
-UseDalle3Model(azureClient);
+//UseDalle3Model(azureClient);
 
 
 
@@ -39,7 +53,6 @@ void UseChatModel(AzureOpenAIClient azureClient)
         MaxOutputTokenCount = 1024,
         Temperature = 1.0f,
         TopP = 1.0f,
-
     };
 
     List<ChatMessage> messages = new List<ChatMessage>()
@@ -48,11 +61,11 @@ void UseChatModel(AzureOpenAIClient azureClient)
     new UserChatMessage("I am going to Stokholm, what should I see?"),
 };
 
-    var response = chatClient.CompleteChatStreaming(messages);
-    PrintResponseToConsole(response);
+    //var response = chatClient.CompleteChatStreaming(messages);
+    //PrintResponseToConsole(response);
 
-    //var response = await chatClient.CompleteChatAsync(messages, requestOptions);
-    //Console.WriteLine(response.Value.Content[0].Text);
+    var response = chatClient.CompleteChat(messages, requestOptions);
+    Console.WriteLine(response.Value.Content[0].Text);
 
     //// Append the model response to the chat history.
     //messages.Add(new AssistantChatMessage(response.Value.Content[0].Text));
