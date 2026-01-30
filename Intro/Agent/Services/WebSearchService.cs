@@ -1,6 +1,6 @@
 ﻿namespace Agent.Services
 {
-    internal class WebSearchService
+    public class WebSearchService
     {
         public WebSearchService()
         {

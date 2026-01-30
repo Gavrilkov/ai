@@ -8,11 +8,11 @@
         {
             _users.AddRange(new[]
             {
-                new User { UserName = "alice", Email = "alice@example.com", City = "Seattle", JobTitle = "Quality assurance engineer." },
-                new User { UserName = "bob", Email = "bob@example.com", City = "New York", JobTitle = "Product manager" },
-                new User { UserName = "charlie", Email = "charlie@example.com", City = "Chicago", JobTitle = "Human resources specialist" },
-                new User { UserName = "tom", Email = "charlie@example.com", City = "Chicago", JobTitle = "Junior developer" },
-                new User { UserName = "andrei", Email = "charlie@example.com", City = "Minsk", JobTitle = "Lead software engineer." },
+                new User { Id =1, UserName = "alice", Email = "alice@example.com", City = "Seattle", JobTitle = "Quality assurance engineer." },
+                new User { Id =2, UserName = "bob", Email = "bob@example.com", City = "New York", JobTitle = "Product manager" },
+                new User { Id =3, UserName = "charlie", Email = "charlie@example.com", City = "Chicago", JobTitle = "Human resources specialist" },
+                new User { Id =4, UserName = "tom", Email = "charlie@example.com", City = "Chicago", JobTitle = "Junior developer" },
+                new User { Id =5, UserName = "andrei", Email = "charlie@example.com", City = "Minsk", JobTitle = "Lead software engineer." },
             });
         }
 
@@ -26,25 +26,24 @@
             return _users;
         }
 
-        public User CreateUser(string username, string email)
+        public User CreateUser(User user)
         {
-            var user = new User
-            {
-                UserName = username,
-                Email = email
-            };
+            Random rand = new Random();
+            rand.Next(10, DateTime.Now.Microsecond);
             _users.Add(user);
             return user;
         }
 
-        public bool UpdateUser(int id, string username, string email)
+        public bool UpdateUser(User u)
         {
-            var user = _users.FirstOrDefault(u => u.Id == id);
+            var user = _users.FirstOrDefault(u => u.Id == u.Id);
             if (user == null)
                 return false;
 
-            user.UserName = username;
-            user.Email = email;
+            user.UserName = u.UserName;
+            user.UserName = u.Email;
+            user.UserName = u.City;
+            user.UserName = u.JobTitle;
             return true;
         }
 

@@ -7,7 +7,9 @@ using Agent.Services;
 using OpenAI.Chat;
 
 var chatClient = GetChatClient();
-var chatAssistant = new ChatAssistant(chatClient, new UserServiceToolsProvider(new UserService()));
+var chatAssistant = new ChatAssistant(chatClient,
+    new UserServiceToolsProvider(new UserService()),
+    new WebSearchServiceToolsProvider(new WebSearchService()));
 
 while (true)
 {
@@ -33,7 +35,6 @@ ChatClient GetChatClient()
 
     return azureClient.GetChatClient(config["AzureOpenAI:Model"]);
 }
-
 
 IConfiguration GetConfiguration()
 {
